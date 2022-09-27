@@ -5,7 +5,7 @@ import Map from "react-map-gl";
 import { arc, pie } from "d3-shape";
 
 import CustomOverlay from "./custom-overlay";
-import ControlPanel, { COLORS } from "./control-panel";
+import { COLORS } from "./control-panel";
 
 import electionData from "./data/us-election-2016.json";
 
@@ -30,7 +30,7 @@ export default function App() {
         initialViewState={{
           longitude: -100,
           latitude: 40,
-          zoom: 4
+          zoom: 4,
         }}
         minZoom={2}
         mapStyle="mapbox://styles/mapbox/light-v9"
@@ -40,7 +40,6 @@ export default function App() {
           <PieCharts data={electionData} />
         </CustomOverlay>
       </Map>
-      <ControlPanel />
     </>
   );
 }
@@ -72,7 +71,7 @@ function PieCharts({ map, data }: { map?: MapboxMap; data: any[] }) {
             {pies[i]}
           </g>
         );
-      })
+      }),
     ];
   }, [map.getZoom(), pies]);
 
@@ -87,7 +86,7 @@ function PieCharts({ map, data }: { map?: MapboxMap; data: any[] }) {
         id="tooltip"
         style={{
           left: tooltipLocation.x,
-          top: tooltipLocation.y
+          top: tooltipLocation.y,
         }}
       >
         <div>
@@ -142,7 +141,7 @@ function makePieChart(
             innerRadius: radius * 0.3,
             outerRadius: radius,
             startAngle: a.startAngle,
-            endAngle: a.endAngle
+            endAngle: a.endAngle,
           })}
         />
       ))}
